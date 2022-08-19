@@ -1,0 +1,36 @@
+<header stick-top *ngIf="user$ | async as user">
+  <nav class="navbar navbar-ligth bg-white">
+    <div *ngIf="user.name; else login">
+      <a class="navbar-brand"
+        ><i
+          class="fa fa-bars text-success mr-2"
+          (click)="menu.abreMenu()"
+          (keyup.space)="menu.abreMenu()"
+        ></i></a
+      >
+      <app-menu #menu>
+        <ul class="list-unstyled">
+          <li>
+            <a [routerLink]="['home']">
+              <div class="link">HOME</div>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['dashboard']"><div class="link">DASHBOARD</div></a>
+          </li>
+        </ul>
+      </app-menu>
+    </div>
+
+    <div>
+      <div *ngIf="user.name; else login">
+        <a (click)="logout()"><i class="fa fa-user-circle text-success mr-1"></i></a>
+        <a class="mr1 text-success"> {{ user.name }}</a>
+      </div>
+    </div>
+  </nav>
+
+  <ng-template #login>
+    <span class="navbar-text"></span>
+  </ng-template>
+</header>

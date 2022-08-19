@@ -1,0 +1,25 @@
+.fa:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.link{
+  background-color: #d9e1e9;
+  text-decoration: none;
+  color: #198754;
+	font-family: 'Arial';
+	font-size: 12pt;
+	padding: 20px;
+	border-bottom: 2px solid #fff;
+}
+
+.link:hover{
+	background-color: #5b5b5c;
+}
+
+.link:active {
+  background-color: #262629;
+}

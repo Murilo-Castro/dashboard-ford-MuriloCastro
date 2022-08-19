@@ -1,0 +1,46 @@
+<section class="container">
+  
+  <div class="row" *ngIf="allVehicles$ | async as vehicles; else listaVazia">
+    <app-cards class="col-md-3">
+      <div class="title"><h6 class="text-secondary">Veiculos</h6></div>
+      <div class="body">
+        <select class="form-control form-select" [value]="selcted" (change)="changeFn($event)" [formControl]="vehiclesInput">
+          <option *ngFor="let vehicle of vehicles">{{ vehicle.vehicle }}</option>
+        </select>
+      </div>
+    </app-cards>
+
+    <app-cards class="col-md-3">
+      <div class="title"><h6 class="text-secondary">Total de Vendas</h6></div>
+      <div class="body" *ngIf="vehicles$ | async as vehicles">
+        <h2 class="text-primary" *ngFor="let vehicle of vehicles | paginate: { itemsPerPage: 1, currentPage: paginaAtual}">{{ vehicle.volumetotal }}</h2>
+        <p class="text-secondary">Unid.</p>
+      </div>
+    </app-cards>
+
+    <app-cards class="col-md-3">
+      <div class="title"><h6 class="text-secondary">Conectados</h6></div>
+      <div class="body" *ngIf="vehicles$ | async as vehicles">
+        <span><h2 class="text-primary" *ngFor="let vehicle of vehicles | paginate: { itemsPerPage: 1, currentPage: paginaAtual}">{{ vehicle.connected }}</h2></span>
+        <p class="text-secondary">Unid.</p>
+      </div>
+    </app-cards>
+    
+    <app-cards class="col-md-3">
+      <div class="title"><h6 class="text-secondary">Update Software</h6></div>
+      <div class="body" *ngIf="vehicles$ | async as vehicles">
+        <h2 class="text-primary" *ngFor="let vehicle of vehicles | paginate: { itemsPerPage: 1, currentPage: paginaAtual}">{{ vehicle.softwareUpdates }}</h2>
+        <p class="text-secondary">Unid.</p>
+      </div>
+    </app-cards>
+
+    <div class="text-center">
+      <img class="img img-fluid p-4" [src]="imgPath" alt="Foto do Veiculo.">
+    </div>
+  </div>
+
+  <ng-template #listaVazia>
+    <p>Nenhum veículo cadastrado no momento.</p>
+  </ng-template>
+  
+

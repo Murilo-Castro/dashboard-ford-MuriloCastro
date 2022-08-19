@@ -1,0 +1,70 @@
+<div class="text-center">
+  <img
+    src="assets/imgs/ford.png"
+    alt=""
+    class="img-fluid d-none rounded mx-auto d-sm-flex w-50 p-3"
+  />
+</div>
+
+<h2 class="text-center text-success pt-4 pb-4">Boas-Vindas</h2>
+
+<form class="form pl-5 pr-5" (ngSubmit)="login()" #loginForm="ngForm">
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="fa fa-user text-success" aria-hidden="true"></i>
+        </div>
+      </div>
+      <input
+        class="form-control d-block"
+        placeholder="Nome do usuário"
+        [(ngModel)]="usuario"
+        name="usuario"
+        #userField="ngModel"
+        required
+      />
+    </div>
+    <app-message
+      *ngIf="userField.invalid && userField.touched"
+      message="Usuário obrigatório!"
+    ></app-message>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="fa fa-lock text-success"></i>
+        </div>
+      </div>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Senha"
+        [(ngModel)]="senha"
+        name="senha"
+        #passwordField="ngModel"
+        required
+      />
+    </div>
+    <app-message
+      *ngIf="passwordField.invalid && passwordField.touched"
+      message="Usuário obrigatório!"
+    ></app-message>
+  </div>
+
+  <div class="form-check form-switch mt-4">
+    <label class="form-check-label text-success" for="flexSwitchCheckDefault"
+      >Logar automaticamente</label
+    >
+
+    <input
+      class="form-check-input position-absolute end-0"
+      type="checkbox"
+      role="switch"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-success btn-block mt-2" [disabled]="loginForm.invalid">Entrar</button>
+</form>

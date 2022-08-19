@@ -1,0 +1,31 @@
+<section>
+  <div class="row">
+    <table style="margin-bottom: 0;" class="table">
+      <thead scope="row">
+        <tr bgColor="#1b357e" class="text-light table-bordered">
+          <th scope="col" class="text-center">Código Vin</th>
+          <th scope="col" class="text-center">Odômetro</th>
+          <th scope="col" class="text-center">Nível de Combustivel</th>
+          <th scope="col" class="text-center">Status</th>
+          <th scope="col" class="text-center">Latitude</th>
+          <th scope="col" class="text-center">Longitude</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="vehicleData$ | async as vehiclesData">
+        <tr scope="row">
+          <td class="text-center"><input class="form-control form-control-sm" [ngModel]="bar" (ngModelChange)="modelChangeFn($event)" type="search" [formControl]="vehicleDataInput"/></td>
+          <td class="text-center" *ngFor="let vehicleData of vehiclesData | paginate: { itemsPerPage: 1, currentPage: paginaAtual }">{{ vehicleData.odometer }}</td>
+          <td class="text-center" *ngFor="let vehicleData of vehiclesData | paginate: { itemsPerPage: 1, currentPage: paginaAtual }">{{ vehicleData.fuelLevel }}</td>
+          <td class="text-center" *ngFor="let vehicleData of vehiclesData | paginate: { itemsPerPage: 1, currentPage: paginaAtual }">{{ vehicleData.status }}</td>
+          <td class="text-center" *ngFor="let vehicleData of vehiclesData | paginate: { itemsPerPage: 1, currentPage: paginaAtual }">{{ vehicleData.lat }}</td>
+          <td class="text-center" *ngFor="let vehicleData of vehiclesData | paginate: { itemsPerPage: 1, currentPage: paginaAtual }">{{ vehicleData.long }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row" style="height: 20px; background-color: #1b357e;"></div>
+  <ng-template #listaVazia>
+    <p>Nenhum veículo cadastrado.</p>
+  </ng-template>
+</section>
+
