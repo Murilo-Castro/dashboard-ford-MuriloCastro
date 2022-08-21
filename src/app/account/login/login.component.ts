@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AutenticacaoService } from 'src/app/autenticacao/autenticacao.service';
@@ -8,16 +8,12 @@ import { AutenticacaoService } from 'src/app/autenticacao/autenticacao.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent {
   usuario = '';
   senha = '';
 
-  private subscriptions = new Subscription();
-
   constructor(private authService: AutenticacaoService,
     private router: Router) {}
-
-  ngOnInit(): void {}
 
   login() {
     this.authService.autenticar(this.usuario, this.senha).subscribe(
@@ -32,9 +28,5 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
     console.log(this.usuario);
     console.log(this.senha);
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
   }
 }

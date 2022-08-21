@@ -3,7 +3,7 @@ export interface VehiclesData extends Array<VehicleData> {}
 export interface VehicleData {
   id: number | string;
   vin: number | string;
-  odometer: number;
+  odometer: number | string;
   tirePressure: number | string;
   status: string;
   batteryStatus: string;

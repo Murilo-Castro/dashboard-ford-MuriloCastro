@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutenticacaoGuard } from './autenticacao/autenticacao.guard';
+import { LoginGuard } from './autenticacao/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'account', pathMatch: 'full' },
@@ -8,6 +9,7 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () =>
       import('./account/account.module').then((m) => m.AccountModule),
+      canLoad: [LoginGuard]
   },
   {
     path: 'home',
