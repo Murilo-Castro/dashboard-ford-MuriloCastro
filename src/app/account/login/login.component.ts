@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { AutenticacaoService } from 'src/app/autenticacao/autenticacao.service';
 
 @Component({
@@ -12,13 +11,15 @@ export class LoginComponent {
   usuario = '';
   senha = '';
 
-  constructor(private authService: AutenticacaoService,
-    private router: Router) {}
+  constructor(
+    private authService: AutenticacaoService,
+    private router: Router
+  ) {}
 
   login() {
     this.authService.autenticar(this.usuario, this.senha).subscribe(
       () => {
-        this.router.navigate(['home'])
+        this.router.navigate(['home']);
         console.log('Autenticado com sucesso!');
       },
       (error) => {

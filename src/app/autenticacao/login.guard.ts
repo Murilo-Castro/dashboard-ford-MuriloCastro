@@ -7,7 +7,7 @@ import { UserService } from './user/user.service';
   providedIn: 'root',
 })
 export class LoginGuard implements CanLoad {
-  constructor(private userService: UserService,private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   canLoad(
     route: Route,
@@ -17,7 +17,7 @@ export class LoginGuard implements CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if(this.userService.isLoggedIn()) {
+    if (this.userService.isLoggedIn()) {
       this.router.navigate(['home']);
       return false;
     }

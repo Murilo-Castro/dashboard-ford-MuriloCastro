@@ -6,8 +6,8 @@
           class="fa fa-bars text-success mr-2"
           (click)="menu.abreMenu()"
           (keyup.space)="menu.abreMenu()"
-        ></i></a
-      >
+        ></i
+      ></a>
       <app-menu #menu>
         <ul class="list-unstyled">
           <li>
@@ -16,7 +16,9 @@
             </a>
           </li>
           <li>
-            <a [routerLink]="['dashboard']"><div class="link">DASHBOARD</div></a>
+            <a [routerLink]="['dashboard']"
+              ><div class="link">DASHBOARD</div></a
+            >
           </li>
         </ul>
       </app-menu>
@@ -24,7 +26,9 @@
 
     <div>
       <div *ngIf="user.name; else login">
-        <a (click)="logout()"><i class="fa fa-user-circle text-success mr-1"></i></a>
+        <a (click)="logout()"
+          ><i class="fa fa-user-circle text-success mr-1"></i
+        ></a>
         <a class="mr1 text-success"> {{ user.name }}</a>
       </div>
     </div>

@@ -5,14 +5,13 @@ import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   private userSubject = new BehaviorSubject<User>({});
 
   constructor(private tokenService: TokenService) {
-    if(this.tokenService.hasToken()) {
+    if (this.tokenService.hasToken()) {
       this.decoderJWT();
     }
   }
@@ -40,5 +39,4 @@ export class UserService {
   isLoggedIn() {
     return this.tokenService.hasToken();
   }
-
 }

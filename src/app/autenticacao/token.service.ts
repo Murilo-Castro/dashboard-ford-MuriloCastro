@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 const KEY = 'token';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenService {
   returnToken() {
@@ -21,5 +21,4 @@ export class TokenService {
   hasToken() {
     return !!this.returnToken();
   }
-
 }
