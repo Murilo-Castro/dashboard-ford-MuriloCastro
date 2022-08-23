@@ -12,7 +12,7 @@ export class VehicleComponent {
   vehiclesInput = new FormControl();
   
   selcted = 'Ranger';
-  paginaAtual = 1;
+  page = 1;
   imgPath = 'assets/imgs/Ranger.png';
 
   allVehicles$ = this.vehicleService.getVehicles()

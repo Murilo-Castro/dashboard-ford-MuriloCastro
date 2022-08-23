@@ -9,7 +9,7 @@
 
   <h2 class="text-center text-success pt-4 pb-4">Boas-Vindas</h2>
 
-  <form class="form pl-5 pr-5" (ngSubmit)="login()" #loginForm="ngForm">
+  <form class="form pl-3 pr-3" (ngSubmit)="login()" #loginForm="ngForm">
     <div class="form-group">
       <div class="input-icons">
         <i class="fa fa-user icon text-success"></i>
@@ -48,25 +48,29 @@
       ></app-message>
     </div>
 
-    <div class="form-check form-switch pl-0">
-      <label class="form-check-label text-success" for="flexSwitchCheckDefault"
-        >Logar automaticamente</label
-      >
-
-      <input
-        class="form-check-input position-absolute end-0"
-        type="checkbox"
-        role="switch"
-        checked
-      />
+    <div class="form-group">
+      <div class="form-check form-switch pl-0">
+        <label class="form-check-label text-success" for="flexSwitchCheckDefault"
+          >Logar automaticamente</label
+        >
+  
+        <input
+          class="form-check-input position-absolute end-0"
+          type="checkbox"
+          role="switch"
+          checked
+        />
+      </div>
     </div>
 
-    <button
-      type="submit"
-      class="btn btn-success btn-block mt-2"
-      [disabled]="loginForm.invalid"
-    >
-      Entrar
-    </button>
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-success btn-block mt-2"
+        [disabled]="loginForm.invalid"
+      >
+        Entrar
+      </button>
+    </div>
   </form>
 </div>

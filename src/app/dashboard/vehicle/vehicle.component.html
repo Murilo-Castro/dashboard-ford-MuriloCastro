@@ -23,7 +23,7 @@
           class="text-primary"
           *ngFor="
             let vehicle of vehicles
-              | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
+              | paginate: { itemsPerPage: 1, currentPage: page }
           "
         >
           {{ vehicle.volumetotal }}
@@ -40,7 +40,7 @@
             class="text-primary"
             *ngFor="
               let vehicle of vehicles
-                | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
+                | paginate: { itemsPerPage: 1, currentPage: page }
             "
           >
             {{ vehicle.connected }}
@@ -57,7 +57,7 @@
           class="text-primary"
           *ngFor="
             let vehicle of vehicles
-              | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
+              | paginate: { itemsPerPage: 1, currentPage: page }
           "
         >
           {{ vehicle.softwareUpdates }}

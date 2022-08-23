@@ -1,14 +1,25 @@
 <div class="container">
   <div class="align-self-end mt-5 pt-4">
-    <img class="img-fluid d-none d-sm-block" src="assets/imgs/Ranger.png" alt="">
+    <img
+      class="img-fluid d-none d-sm-block"
+      src="assets/imgs/Ranger.png"
+      alt=""
+    />
   </div>
 
-  <div class="card opacity-75 border-dark position-absolute top-50 start-50 translate-middle">
-    <div class="card-header "><h4>Sistema de dados FORD</h4></div>
-    <div class="card-body ">
-      <p class="card-text text-primary">Seja vem vindo(a)!</p>
-      <p class="card-text text-primary">Esse é o sistema de gerenciamento de dados veiculares
-        <br>Aqui você encontrará informações referentes à:<br></p>
+  <div
+    class="card opacity-75 border-dark position-absolute top-50 start-50 translate-middle"
+  >
+    <div class="card-header"><h4>Sistema de dados FORD</h4></div>
+    <div class="card-body">
+      <p class="card-text text-primary" *ngIf="user$ | async as user">
+        Olá {{ user.fullName }}!
+      </p>
+      <p class="card-text text-primary">
+        Seja bem vindo ao dashboar Ford.<br />Esse é o sistema de gerenciamento
+        de dados veiculares <br />Aqui você encontrará informações referentes
+        à:<br />
+      </p>
       <ul class="card-text text-primary">
         <li>Total de veiculos vendidos</li>
         <li>Total conectados ao Ford Pass</li>
@@ -18,4 +29,3 @@
     </div>
   </div>
 </div>
-

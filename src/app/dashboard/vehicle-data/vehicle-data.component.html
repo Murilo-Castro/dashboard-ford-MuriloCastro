@@ -12,61 +12,27 @@
         </tr>
       </thead>
       <tbody *ngIf="vehicleData$ | async as vehiclesData">
-        <tr scope="row">
+        <tr
+          scope="row"
+          *ngFor="
+            let vehicleData of vehiclesData
+              | paginate: { itemsPerPage: 1, currentPage: page }
+          "
+        >
           <td class="text-center">
             <input
               class="form-control form-control-sm"
-              [ngModel]="bar"
+              [ngModel]="vin"
               (ngModelChange)="modelChangeFn($event)"
               type="search"
               [formControl]="vehicleDataInput"
             />
           </td>
-          <td
-            class="text-center"
-            *ngFor="
-              let vehicleData of vehiclesData
-                | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
-            "
-          >
-            {{ vehicleData.odometer }}
-          </td>
-          <td
-            class="text-center"
-            *ngFor="
-              let vehicleData of vehiclesData
-                | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
-            "
-          >
-            {{ vehicleData.fuelLevel }}
-          </td>
-          <td
-            class="text-center"
-            *ngFor="
-              let vehicleData of vehiclesData
-                | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
-            "
-          >
-            {{ vehicleData.status }}
-          </td>
-          <td
-            class="text-center"
-            *ngFor="
-              let vehicleData of vehiclesData
-                | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
-            "
-          >
-            {{ vehicleData.lat }}
-          </td>
-          <td
-            class="text-center"
-            *ngFor="
-              let vehicleData of vehiclesData
-                | paginate: { itemsPerPage: 1, currentPage: paginaAtual }
-            "
-          >
-            {{ vehicleData.long }}
-          </td>
+          <td class="text-center">{{ vehicleData.odometer }}</td>
+          <td class="text-center">{{ vehicleData.fuelLevel }}</td>
+          <td class="text-center">{{ vehicleData.status }}</td>
+          <td class="text-center">{{ vehicleData.lat }}</td>
+          <td class="text-center">{{ vehicleData.long }}</td>
         </tr>
       </tbody>
     </table>

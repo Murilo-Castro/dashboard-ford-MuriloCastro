@@ -13,8 +13,8 @@ const esperaDigitacao = 300;
 export class VehicleDataComponent {
   vehicleDataInput = new FormControl();
   
-  bar = '2FRHDUYS2Y63NHD22454';
-  paginaAtual = 1;
+  vin = '2FRHDUYS2Y63NHD22454';
+  page = 1;
 
   teste$ = this.vehicleDataService.getVehiclesData().pipe();
 
@@ -36,6 +36,6 @@ export class VehicleDataComponent {
   constructor(private vehicleDataService: VehicleDataService) {}
 
   modelChangeFn(value: any) {
-    this.bar = value;
+    this.vin = value;
   }
 }
