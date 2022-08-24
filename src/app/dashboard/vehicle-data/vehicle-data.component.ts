@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { switchMap, debounceTime, distinctUntilChanged, map, EMPTY, merge, } from 'rxjs';
+import {
+  switchMap,
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  EMPTY,
+  merge,
+  filter,
+} from 'rxjs';
 import { VehicleDataService } from './vehicle-data.service';
 
 const esperaDigitacao = 300;
@@ -12,7 +20,7 @@ const esperaDigitacao = 300;
 })
 export class VehicleDataComponent {
   vehicleDataInput = new FormControl();
-  
+
   vin = '2FRHDUYS2Y63NHD22454';
   page = 1;
 
@@ -23,11 +31,10 @@ export class VehicleDataComponent {
   searchVehicleData$ = this.vehicleDataInput.valueChanges.pipe(
     map((searchValue) => searchValue.trim()),
     debounceTime(esperaDigitacao),
+    filter((searchValue) => searchValue.length >= 5 || !searchValue.length),
     distinctUntilChanged(),
     switchMap((searchValue) =>
-      searchValue.length >= 5
-        ? this.vehicleDataService.getVehiclesData(searchValue)
-        : EMPTY
+      this.vehicleDataService.getVehiclesData(searchValue)
     )
   );
 
