@@ -30,6 +30,15 @@ INSERT INTO user (
 ) SELECT 'diogo', 'diogo@ford.com', '1234', 'Diogo' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'diogo')
 `;
 
+const INSERT_DEFAULT_USER_3 = `
+INSERT INTO user (
+    user_name, 
+    user_email,
+    user_password,
+    user_full_name
+) SELECT 'murilo', 'murilo@ford.com', '123456', 'Murilo Castro' WHERE NOT EXISTS (SELECT * FROM user WHERE user_name = 'murilo')
+`;
+
 const VEHICLE_SCHEMA = `
 CREATE TABLE IF NOT EXISTS VEHICLE (
     vehicle_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -76,6 +85,24 @@ INSERT INTO VEHICLE (
     vehicle_connected,
     vehicle_softwareUpdates
 ) SELECT 'Bronco Sport', 7560, 4060, 2050 WHERE NOT EXISTS (SELECT * FROM VEHICLE WHERE vehicle_model = 'Bronco Sport')
+`;
+
+const INSERT_VEHICLE_5 = `
+INSERT INTO VEHICLE (
+    vehicle_model, 
+    vehicle_volumetotal,
+    vehicle_connected,
+    vehicle_softwareUpdates
+) SELECT 'Ecosport', 47560, 34060, 20500 WHERE NOT EXISTS (SELECT * FROM VEHICLE WHERE vehicle_model = 'Ecosport')
+`;
+
+const INSERT_VEHICLE_6 = `
+INSERT INTO VEHICLE (
+    vehicle_model, 
+    vehicle_volumetotal,
+    vehicle_connected,
+    vehicle_softwareUpdates
+) SELECT 'Ka', 75600, 52406, 45000 WHERE NOT EXISTS (SELECT * FROM VEHICLE WHERE vehicle_model = 'Ka')
 `;
 
 
@@ -153,11 +180,14 @@ db.serialize(() => {
   db.run(USER_SCHEMA);
   db.run(INSERT_DEFAULT_USER_1);
   db.run(INSERT_DEFAULT_USER_2);
+  db.run(INSERT_DEFAULT_USER_3);
   db.run(VEHICLE_SCHEMA);
   db.run(INSERT_VEHICLE_1);
   db.run(INSERT_VEHICLE_2);
   db.run(INSERT_VEHICLE_3);
   db.run(INSERT_VEHICLE_4);
+  db.run(INSERT_VEHICLE_5);
+  db.run(INSERT_VEHICLE_6);
   db.run(VEHICLEDATA_SCHEMA);
   db.run(INSERT_VEHICLEDATA_1);
   db.run(INSERT_VEHICLEDATA_2);
